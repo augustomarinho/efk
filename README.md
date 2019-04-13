@@ -2,7 +2,7 @@
 Project for studying EFK + Docker + logback-appender
 
 ## Example project (SpringBoot + Docker)
-
+### Building infrastructure
 1. Clone project [SpringBoot project with logback-appender + Docker](https://github.com/augustomarinho/springboot-fluentd-appender)
 2. mvn clean install docker:build
 3. docker run -d --name springboot-app --label elastic_index=springboot --label send.logs=true -p 8002:8080 augustomarinho/springboot-fluentd-appender
