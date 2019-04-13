@@ -19,3 +19,17 @@ Project for studying EFK + Docker + logback-appender
 3. Running Elastich Search and Kibana: docker-compose -f docker-compose.yml  up -d --force-recreate
 4. Link Kibana: http://localhost:5601 | Link Elasticsearch: http://localhost:8100
 
+### Running Filebeat
+1. docker pull docker.elastic.co/beats/filebeat:7.0.0
+2. Download file filebeat.yml from https://github.com/augustomarinho/efk/blob/master/devops/filebeat/filebeat.yml
+3. Copy filebeat.yml to /filebeat directory
+4. Creating a filebeat directory: mkdir /filebeat
+5. docker run -d \
+  --name=filebeat \
+  --user=root \
+  --volume="/filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro" \
+  --volume="/var/lib/docker/containers:/var/lib/docker/containers:ro" \
+  --volume="/var/run/docker.sock:/var/run/docker.sock:ro" \
+  --volume="/var/log:/var/log:ro" \
+  --volume="/filebeat/data:/usr/share/filebeat/data:rw" \
+  docker.elastic.co/beats/filebeat:7.0.0 filebeat -e -strict.perms=false -E beat.name=`hostname -I | cut -d' ' -f1` -E output.elasticsearch.hosts=["`hostname -I | cut -d' ' -f1`:9200"]
