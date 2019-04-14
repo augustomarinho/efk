@@ -32,4 +32,4 @@ Project for studying EFK + Docker + logback-appender
   --volume="/var/run/docker.sock:/var/run/docker.sock:ro" \
   --volume="/var/log:/var/log:ro" \
   --volume="/filebeat/data:/usr/share/filebeat/data:rw" \
-  docker.elastic.co/beats/filebeat:7.0.0 filebeat -e -strict.perms=false -E beat.name=`hostname -I | cut -d' ' -f1` -E output.elasticsearch.hosts=["`hostname -I | cut -d' ' -f1`:9200"]
+  docker.elastic.co/beats/filebeat:7.0.0 filebeat -e -strict.perms=false -E beat.name=\`hostname -I | cut -d' ' -f1\` -E output.elasticsearch.hosts=["\`hostname -I | cut -d' ' -f1\`:9200"]
