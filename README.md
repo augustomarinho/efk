@@ -4,10 +4,10 @@ Project for studying EFK + Docker + logback-appender
 ## Example project (SpringBoot + Docker)
 ### Building infrastructure
 1. Clone project [SpringBoot project with logback-appender + Docker](https://github.com/augustomarinho/springboot-fluentd-appender)
-2. Building application and docker image: mvn clean install docker:build
-3. Building docker container: docker run -d --name springboot-app --label elastic_index=springboot --label send.logs=true -p 8002:8080 augustomarinho/springboot-fluentd-appender
+2. Building application and docker image: ```mvn clean install docker:build```
+3. Building docker container: ```docker run -d --name springboot-app --label elastic_index=springboot --label send.logs=true -p 8002:8080 augustomarinho/springboot-fluentd-appender```
 #### Testing App
-1. Calling endpoint for testing: curl -X GET http://localhost:8002/query/cpf/12345678909 -v
+1. Calling endpoint for testing: ```curl -X GET http://localhost:8002/query/cpf/12345678909 -v```
 2. Verify logs as a json format: docker logs springboot-app
 3. Check output format (must be similar to below example)
 ```json
@@ -20,7 +20,7 @@ Project for studying EFK + Docker + logback-appender
 4. Link Kibana: http://localhost:5601 | Link Elasticsearch: http://localhost:8100
 
 ### Running Filebeat
-1. docker pull docker.elastic.co/beats/filebeat:7.0.0
+1. ```docker pull docker.elastic.co/beats/filebeat:7.0.0```
 2. Download file filebeat.yml from https://github.com/augustomarinho/efk/blob/master/devops/filebeat/filebeat.yml
 3. Copy filebeat.yml to /filebeat directory
 4. Creating a filebeat directory: mkdir /filebeat
