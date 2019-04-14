@@ -15,8 +15,8 @@ Project for studying EFK + Docker + logback-appender
 ```
 ### Running Elastic Search and Kibana
 1. [Downloading docker-compose file](https://github.com/augustomarinho/efk/blob/master/devops/elasticsearch/docker-compose.yml) - Credits for docker-compose file: https://alysivji.github.io/elasticsearch-kibana-with-docker-compose.html
-2. Execute on terminal this command: sudo sysctl -w vm.max_map_count=262144 - [more details about it:](https://www.elastic.co/guide/en/elasticsearch/reference/current/_maximum_map_count_check.html)
-3. Running Elastich Search and Kibana: docker-compose -f docker-compose.yml  up -d --force-recreate
+2. Execute on terminal this command: ```sudo sysctl -w vm.max_map_count=262144``` - [more details about it:](https://www.elastic.co/guide/en/elasticsearch/reference/current/_maximum_map_count_check.html)
+3. Running Elastich Search and Kibana: ```docker-compose -f docker-compose.yml  up -d --force-recreate```
 4. Link Kibana: http://localhost:5601 | Link Elasticsearch: http://localhost:8100
 
 ### Running Filebeat
